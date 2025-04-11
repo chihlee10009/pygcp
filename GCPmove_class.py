@@ -3,15 +3,15 @@
 import os
 from google.cloud import storage
 
-os.system("echo 'ICKd 4wX0B2LYfzx' > caesar_half04092025.txt")
 
 class GCPmove:
     def __init__(self):
-        #print(help(storage.Client))
+        self.downloaded_file_name = "caesar_half04102025.txt"
         storage_obj = storage.Client(project="PyScribble")
         bucket = storage_obj.bucket("pyscribble_bucket")
         blob = bucket.blob("caehlf04092025.txt")
-        blob.upload_from_filename("caesar_half04092025.txt")
-        print("uploaded file")
+        blob.download_to_filename(self.downloaded_file_name)
+        print(f"downloaded file")
 
-GCPmove()
+if __name__ == "__main__":
+    GCPmove()
